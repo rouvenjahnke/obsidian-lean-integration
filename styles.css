@@ -1,0 +1,593 @@
+/* Lean Plugin Styles */
+
+/* Common */
+.lean-container {
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.lean-header {
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.lean-header h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Goal Panel */
+.lean-goals-container {
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.lean-goals-header {
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.lean-goals-header h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.lean-goals-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lean-no-goals {
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 10px 0;
+}
+
+.lean-goal {
+  background-color: var(--background-secondary);
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lean-goal:hover {
+  background-color: var(--background-secondary-alt);
+}
+
+.lean-goal-selected {
+  border-left: 3px solid var(--interactive-accent);
+  background-color: var(--background-secondary-alt);
+}
+
+.lean-goal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.lean-goal-content {
+  margin: 0;
+  padding: 8px;
+  background-color: var(--background-primary);
+  border-radius: 3px;
+  font-family: var(--font-monospace);
+  font-size: 12px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+/* Tactic Suggestions */
+.lean-tactics-panel {
+  margin-top: 15px;
+  border-top: 1px solid var(--background-modifier-border);
+  padding-top: 10px;
+}
+
+.lean-tactic-suggestions h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+.lean-tactic-search {
+  margin-bottom: 10px;
+}
+
+.lean-tactic-search-input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid var(--background-modifier-border);
+  background-color: var(--background-primary);
+}
+
+.lean-tactic-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lean-tactic-group h5 {
+  margin: 0 0 5px 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lean-tactic-high h5 {
+  color: var(--interactive-accent);
+}
+
+.lean-tactic-medium h5 {
+  color: var(--text-normal);
+}
+
+.lean-tactic-low h5 {
+  color: var(--text-muted);
+}
+
+.lean-tactic-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lean-tactic-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 3px;
+  background-color: var(--background-primary);
+}
+
+.lean-tactic-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.lean-tactic-name {
+  font-family: var(--font-monospace);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lean-tactic-description {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.lean-tactic-apply-button {
+  font-size: 11px;
+  padding: 2px 8px;
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.lean-tactic-custom {
+  margin-top: 10px;
+}
+
+.lean-tactic-custom-input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid var(--background-modifier-border);
+  background-color: var(--background-primary);
+  font-family: var(--font-monospace);
+  resize: vertical;
+}
+
+/* Interpreter */
+.lean-interpreter-container {
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.lean-interpreter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.lean-interpreter-examples {
+  display: flex;
+  gap: 5px;
+}
+
+.lean-example-button {
+  font-size: 11px;
+  padding: 2px 8px;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.lean-interpreter-input-container {
+  margin-bottom: 15px;
+}
+
+.lean-interpreter-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--background-modifier-border);
+  background-color: var(--background-primary);
+  font-family: var(--font-monospace);
+  resize: vertical;
+  margin-bottom: 5px;
+}
+
+.lean-interpreter-button {
+  padding: 5px 15px;
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.lean-interpreter-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lean-interpreter-output h5,
+.lean-interpreter-history h5 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+}
+
+.lean-interpreter-result {
+  margin: 0;
+  padding: 8px;
+  background-color: var(--background-secondary);
+  border-radius: 4px;
+  font-family: var(--font-monospace);
+  font-size: 12px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.lean-history-entries {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lean-history-entry {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lean-history-code {
+  padding: 5px 8px;
+  background-color: var(--background-secondary-alt);
+  font-family: var(--font-monospace);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.lean-history-code:hover {
+  background-color: var(--background-modifier-form-field);
+}
+
+.lean-history-prompt {
+  color: var(--interactive-accent);
+  font-weight: bold;
+}
+
+.lean-history-result {
+  margin: 0;
+  padding: 5px 8px;
+  background-color: var(--background-secondary);
+  font-family: var(--font-monospace);
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+.lean-interpreter-help {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.lean-help-list {
+  margin: 5px 0;
+  padding-left: 20px;
+}
+
+.lean-help-note {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* Debugger */
+.lean-debugger-container {
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.lean-debugger-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.lean-debugger-status {
+  font-size: 12px;
+}
+
+.lean-status-idle {
+  color: var(--text-muted);
+}
+
+.lean-status-starting {
+  color: var(--text-accent);
+}
+
+.lean-status-paused {
+  color: var(--interactive-accent);
+}
+
+.lean-status-running {
+  color: var(--text-success);
+}
+
+.lean-status-error {
+  color: var(--text-error);
+}
+
+.lean-debugger-controls {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.lean-debug-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.lean-debug-start {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+.lean-debug-stop {
+  background-color: var(--text-error);
+  color: white;
+}
+
+.lean-debug-continue {
+  background-color: var(--text-success);
+  color: white;
+}
+
+.lean-debug-step {
+  background-color: var(--text-accent);
+  color: white;
+}
+
+.lean-debug-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lean-debugger-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.lean-debugger-section h5 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+.lean-breakpoint-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lean-breakpoint-item {
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 3px;
+  background-color: var(--background-primary);
+  font-family: var(--font-monospace);
+  font-size: 12px;
+}
+
+.lean-unverified {
+  color: var(--text-error);
+  font-style: italic;
+}
+
+.lean-add-breakpoint {
+  display: flex;
+  margin-top: 8px;
+  gap: 5px;
+}
+
+.lean-breakpoint-input {
+  flex: 1;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--background-modifier-border);
+  background-color: var(--background-primary);
+}
+
+.lean-breakpoint-button {
+  padding: 4px 8px;
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.lean-variables-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-family: var(--font-monospace);
+}
+
+.lean-variables-table th {
+  text-align: left;
+  padding: 5px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.lean-variables-table td {
+  padding: 5px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.lean-variable-name {
+  font-weight: 600;
+}
+
+.lean-variable-type {
+  color: var(--text-muted);
+}
+
+.lean-debugger-output h5 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+.lean-output-console {
+  height: 150px;
+  overflow-y: auto;
+  background-color: var(--background-primary);
+  border-radius: 4px;
+  padding: 8px;
+  font-family: var(--font-monospace);
+  font-size: 12px;
+}
+
+.lean-output-line {
+  margin-bottom: 3px;
+}
+
+/* Editor integration */
+.lean-debug-breakpoint {
+  background-color: rgba(255, 50, 50, 0.2);
+}
+
+.cm-s-obsidian .lean-error {
+  text-decoration: wavy underline;
+}
+
+.lean-error-1 {
+  text-decoration-color: var(--text-error) !important;
+}
+
+.lean-error-2 {
+  text-decoration-color: var(--text-warning) !important;
+}
+
+.lean-error-3, .lean-error-4 {
+  text-decoration-color: var(--text-accent) !important;
+}
+
+/* Code completion */
+.lean-completion-item {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-monospace);
+}
+
+/* Syntax highlighting for Lean */
+.token.lean-keyword {
+  color: var(--code-keyword);
+}
+
+.token.lean-operator {
+  color: var(--code-operator);
+}
+
+.token.lean-function {
+  color: var(--code-function);
+}
+
+.token.lean-type {
+  color: var(--code-tag);
+}
+
+.token.lean-identifier {
+  color: var(--code-function);
+}
+
+.token.lean-comment {
+  color: var(--code-comment);
+}
+
+.token.lean-string {
+  color: var(--code-string);
+}
+
+.token.lean-number {
+  color: var(--code-value);
+}
+
+/* Lake update dialog */
+.lean-update-list {
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: var(--background-secondary);
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.lean-update-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Help sections */
+.lean-goals-help details,
+.lean-interpreter-help details {
+  margin-top: 15px;
+  border-top: 1px solid var(--background-modifier-border);
+  padding-top: 10px;
+}
+
+.lean-help-content {
+  padding: 10px;
+  font-size: 12px;
+}
