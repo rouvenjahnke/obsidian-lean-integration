@@ -13,7 +13,7 @@ import {
   request,
   ItemView
 } from 'obsidian';
-import { createRoot } from 'react-dom/client';
+import { render } from 'preact';
 import { LeanClient } from './leanClient';
 import { GoalPanel, useGoalStore } from './components/GoalPanel';
 import { LeanInterpreter } from './components/LeanInterpreter';
@@ -110,11 +110,8 @@ class LeanGoalView extends ItemView {
     container.empty();
     container.addClass('lean-goals-container');
 
-    // Create root for React
-    this.root = createRoot(container);
-    
-    // Render the GoalPanel component
-    this.root.render(
+    // Render the component with Preact
+    render(
       GoalPanel({
         onGoalClick: (goal: LeanGoal) => {
           // Navigate to the goal in the editor
@@ -125,13 +122,17 @@ class LeanGoalView extends ItemView {
           // Apply the tactic at the goal position
           this.applyTactic(tactic, goal);
         }
-      })
+      }),
+      container
     );
+    
+    // Store container for cleanup
+    this.root = container;
   }
 
   async onClose(): Promise<void> {
     if (this.root) {
-      this.root.unmount();
+      render(null, this.root);
     }
   }
   
@@ -223,26 +224,27 @@ class LeanInterpreterView extends ItemView {
     const container = this.containerEl.children[1];
     container.empty();
     container.addClass('lean-interpreter-container');
-
-    // Create root for React
-    this.root = createRoot(container);
     
     // Get the active file path
     const activeFile = this.app.workspace.getActiveFile();
     const filePath = activeFile ? activeFile.path : '';
     
     // Render the component
-    this.root.render(
+    render(
       LeanInterpreter({
         leanClient: this.plugin.leanClient,
         currentFile: filePath
-      })
+      }),
+      container
     );
+    
+    // Store container for cleanup
+    this.root = container;
   }
 
   async onClose(): Promise<void> {
     if (this.root) {
-      this.root.unmount();
+      render(null, this.root);
     }
   }
 }
@@ -273,16 +275,13 @@ class LeanDebuggerView extends ItemView {
     const container = this.containerEl.children[1];
     container.empty();
     container.addClass('lean-debugger-container');
-
-    // Create root for React
-    this.root = createRoot(container);
     
     // Get the active file path
     const activeFile = this.app.workspace.getActiveFile();
     const filePath = activeFile ? activeFile.path : '';
     
     // Render the component
-    this.root.render(
+    render(
       LeanDebugger({
         leanClient: this.plugin.leanClient,
         currentFile: filePath,
@@ -290,13 +289,17 @@ class LeanDebuggerView extends ItemView {
           // Highlight the breakpoint in the editor
           this.highlightBreakpoint(filePath, line);
         }
-      })
+      }),
+      container
     );
+    
+    // Store container for cleanup
+    this.root = container;
   }
 
   async onClose(): Promise<void> {
     if (this.root) {
-      this.root.unmount();
+      render(null, this.root);
     }
   }
   
