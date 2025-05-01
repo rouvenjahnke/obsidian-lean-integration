@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { h } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
 import { LeanClient } from '../leanClient';
 import { DebugVariable, DebugBreakpoint } from '../types/lean-types';
 
@@ -8,11 +9,11 @@ interface LeanDebuggerProps {
   onSetBreakpoint?: (line: number) => void;
 }
 
-export const LeanDebugger: React.FC<LeanDebuggerProps> = ({ 
+export const LeanDebugger = ({ 
   leanClient, 
   currentFile,
   onSetBreakpoint 
-}) => {
+}: LeanDebuggerProps) => {
   const [sessionActive, setSessionActive] = useState(false);
   const [status, setStatus] = useState<'idle' | 'starting' | 'paused' | 'running' | 'error'>('idle');
   const [variables, setVariables] = useState<DebugVariable[]>([]);

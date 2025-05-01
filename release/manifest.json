@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-lean-integration",
+  "name": "Obsidian Lean Integration",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Advanced Lean 4 integration for Obsidian, including syntax highlighting, language server integration, and goal visualization",
+  "author": "rouvenjahnke",
+  "authorUrl": "https://github.com/rouvenjahnke",
+  "isDesktopOnly": true
+}

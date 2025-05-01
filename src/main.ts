@@ -10,7 +10,8 @@ import {
   TFile,
   EditorPosition,
   Notice,
-  request
+  request,
+  ItemView
 } from 'obsidian';
 import { createRoot } from 'react-dom/client';
 import { LeanClient } from './leanClient';
@@ -18,7 +19,7 @@ import { GoalPanel, useGoalStore } from './components/GoalPanel';
 import { LeanInterpreter } from './components/LeanInterpreter';
 import { LeanDebugger } from './components/LeanDebugger';
 import { LeanDiagnostic, LeanGoal } from './types/lean-types';
-import { MathlibManager } from './mathlib-manager';
+import { MathlibManager } from './modules/mathlib-manager';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as child_process from 'child_process';
@@ -83,7 +84,7 @@ const DEBUGGER_ICON = `<svg viewBox="0 0 100 100" width="100" height="100">
 </svg>`;
 
 // Goal View class for the side panel
-class LeanGoalView extends WorkspaceLeaf {
+class LeanGoalView extends ItemView {
   private root: any;
   private plugin: LeanPlugin;
   
@@ -197,7 +198,7 @@ class LeanGoalView extends WorkspaceLeaf {
 }
 
 // Interpreter View class
-class LeanInterpreterView extends WorkspaceLeaf {
+class LeanInterpreterView extends ItemView {
   private root: any;
   private plugin: LeanPlugin;
   
@@ -247,7 +248,7 @@ class LeanInterpreterView extends WorkspaceLeaf {
 }
 
 // Debugger View class
-class LeanDebuggerView extends WorkspaceLeaf {
+class LeanDebuggerView extends ItemView {
   private root: any;
   private plugin: LeanPlugin;
   
@@ -1028,28 +1029,6 @@ lean_lib MyProject where
     await this.saveData(this.settings);
   }
   
-  /**
-   * Check for mathlib updates
-   */
-  async checkMathlibUpdates() {
-    if (!this.mathlibManager) return;
-    
-    try {
-      new Notice('Checking for mathlib updates...');
-      const hasUpdates = await this.mathlibManager.checkForUpdates();
-      
-      if (!hasUpdates) {
-        new Notice('Mathlib is up to date');
-      }
-      
-      // Update settings with last check time
-      this.settings.mathlibLastUpdateCheck = Date.now();
-      await this.saveSettings();
-    } catch (e) {
-      console.error('Error checking for mathlib updates:', e);
-      new Notice('Error checking for mathlib updates');
-    }
-  }
   
   /**
    * Add mathlib import to current file

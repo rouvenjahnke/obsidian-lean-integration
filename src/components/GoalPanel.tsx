@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { h } from 'preact';
+import { useEffect } from 'preact/hooks';
 import { createStore } from 'zustand';
 import { LeanClient } from '../leanClient';
 import { LeanGoal } from '../types/lean-types';
@@ -26,11 +27,11 @@ interface GoalPanelProps {
   onApplyTactic: (tactic: string, goal: LeanGoal) => void;
 }
 
-export const GoalPanel: React.FC<GoalPanelProps> = ({ 
+export const GoalPanel = ({ 
   onGoalClick, 
   leanClient, 
   onApplyTactic 
-}) => {
+}: GoalPanelProps) => {
   const { goals, selectedGoalId, selectGoal } = useGoalStore();
   const selectedGoal = goals.find(g => g.id === selectedGoalId);
 

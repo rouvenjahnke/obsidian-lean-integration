@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { h } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
 import { LeanClient } from '../leanClient';
 import { LeanGoal, TacticSuggestion } from '../types/lean-types';
 
@@ -8,11 +9,11 @@ interface TacticSuggestionsProps {
   onApplyTactic: (tactic: string) => void;
 }
 
-export const TacticSuggestions: React.FC<TacticSuggestionsProps> = ({ 
+export const TacticSuggestions = ({ 
   leanClient, 
   goal, 
   onApplyTactic 
-}) => {
+}: TacticSuggestionsProps) => {
   const [tactics, setTactics] = useState<TacticSuggestion[]>([]);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState('');

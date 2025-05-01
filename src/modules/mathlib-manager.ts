@@ -1,6 +1,6 @@
 // Mathlib Manager Module - Handles mathlib integration, updates, and downloads
-import { EventEmitter } from 'events';
 import { request } from 'obsidian';
+import { SimpleEventEmitter } from '../utils/simple-event-emitter';
 
 // GitHub release info for mathlib
 const MATHLIB_REPO = 'leanprover-community/mathlib4';
@@ -33,7 +33,7 @@ export interface MathlibManagerOptions {
  * MathlibManager - Manages mathlib installations, updates, and integration
  * Works both in WASM and local modes with different implementation details
  */
-export class MathlibManager extends EventEmitter {
+export class MathlibManager extends SimpleEventEmitter {
   private wasmMode: boolean;
   private mathlibWasmUrl: string | null = null;
   private mathlibWasmData: ArrayBuffer | null = null;

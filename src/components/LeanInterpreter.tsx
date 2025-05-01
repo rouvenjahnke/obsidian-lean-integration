@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { h } from 'preact';
+import { useState } from 'preact/hooks';
 import { LeanClient } from '../leanClient';
 
 interface LeanInterpreterProps {
@@ -6,7 +7,7 @@ interface LeanInterpreterProps {
   currentFile: string;
 }
 
-export const LeanInterpreter: React.FC<LeanInterpreterProps> = ({ leanClient, currentFile }) => {
+export const LeanInterpreter = ({ leanClient, currentFile }: LeanInterpreterProps) => {
   const [code, setCode] = useState('');
   const [result, setResult] = useState('');
   const [isEvaluating, setIsEvaluating] = useState(false);
@@ -33,7 +34,7 @@ export const LeanInterpreter: React.FC<LeanInterpreterProps> = ({ leanClient, cu
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDown = (e: any) => {
     if (e.key === 'Enter' && e.ctrlKey) {
       e.preventDefault();
       handleEvaluate();

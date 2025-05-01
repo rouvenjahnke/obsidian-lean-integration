@@ -1,5 +1,7 @@
-import { spawn, ChildProcess } from 'child_process';
-import { EventEmitter } from 'events';
+import { SimpleEventEmitter } from './utils/simple-event-emitter';
+
+// Define types that would normally come from Node modules
+type ChildProcess = any;
 import { 
   LeanClientOptions, 
   LeanDiagnostic, 
@@ -14,7 +16,7 @@ import {
 } from './types/lean-types';
 import { MathlibManager } from './modules/mathlib-manager';
 
-export class LeanClient extends EventEmitter {
+export class LeanClient extends SimpleEventEmitter {
   private process: ChildProcess | null = null;
   private worker: Worker | null = null;
   private useWasm: boolean;
@@ -63,14 +65,20 @@ export class LeanClient extends EventEmitter {
   }
 
   private async startNodeClient(): Promise<boolean> {
-    let leanPath = this.leanPath;
-
-    if (!leanPath) {
-      // Try to find Lean in PATH
-      leanPath = process.env.LEAN_PATH || 'lean';
-    }
-
+    // In a browser environment, we can't use Node modules directly
+    // This code will only run in a Node environment (Electron)
     try {
+      // Dynamically import child_process
+      const childProcess = require('child_process');
+      const spawn = childProcess.spawn;
+      
+      let leanPath = this.leanPath;
+
+      if (!leanPath) {
+        // Try to find Lean in PATH
+        leanPath = process.env.LEAN_PATH || 'lean';
+      }
+
       this.process = spawn(leanPath, ['--server']);
       
       this.process.stdout?.on('data', (data) => {
